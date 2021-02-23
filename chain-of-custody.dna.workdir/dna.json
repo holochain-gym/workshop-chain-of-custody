@@ -1,0 +1,10 @@
+{
+  "name": "resource-bookings",
+  "uuid": "",
+  "properties": null,
+  "zomes": {
+    "resources": {
+      "wasm_path": "../target/wasm32-unknown-unknown/release/resources.wasm"
+    }
+  }
+}

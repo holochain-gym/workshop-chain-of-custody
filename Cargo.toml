@@ -1,0 +1,15 @@
+[workspace]
+members = [
+  "zomes/resources",
+]
+
+[profile.dev]
+opt-level = "z"
+
+[profile.release]
+opt-level = "z"
+
+[patch.crates-io]
+hc_utils = {git = "https://github.com/holochain/hc-utils", branch = "develop", package = "hc_utils"}
+hdk3 = {git = "https://github.com/holochain/holochain", rev = "a4461535c77f653f36cb3a7bb0dfda84e92ed1be", package = "hdk3"}
+holo_hash = {git = "https://github.com/holochain/holochain", rev = "a4461535c77f653f36cb3a7bb0dfda84e92ed1be", package = "holo_hash"}
