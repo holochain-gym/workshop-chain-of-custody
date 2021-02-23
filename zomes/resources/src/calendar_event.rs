@@ -16,7 +16,6 @@ pub struct CreateCalendarEventInput {
     pub title: String,
     pub start_time: Timestamp,
     pub end_time: Timestamp,
-    pub location: Option<EventLocation>,
     pub invitees: Vec<AgentPubKey>,
 }
 pub fn create_calendar_event(

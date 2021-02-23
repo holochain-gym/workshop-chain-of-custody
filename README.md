@@ -9,6 +9,16 @@ To change the code, you can work either opening VSCode inside the root folder of
 - Having [`nix-shell` installed](https://developer.holochain.org/docs/install/).
 - Have [`holochain-run-dna`](https://www.npmjs.com/package/@holochain-open-dev/holochain-run-dna) installed globally, and the `lair-keystore` described in its README as well.
 
+## Enter the nix-shell
+
+**Run this before running any command in this readme**:
+
+```bash
+$(nix-build https://holochain.love --no-link -A pkgs.holonix)/bin/holonix
+```
+
+This will setup your environment to be able to execute holochain.
+
 ## Building
 
 ```bash

@@ -10,9 +10,9 @@ import path from "path";
 const conductorConfig = Config.gen({});
 
 // Construct proper paths for your DNAs
-const calendarEvents = path.join(__dirname, "../../todo_rename_zome.dna.gz");
+const calendarEvents = path.join(__dirname, "../../chain-of-custody.dna.gz");
 
-const sleep = (ms) => new Promise((resolve) => setTimeout(() => resolve(), ms));
+const sleep = (ms) => new Promise((resolve) => setTimeout(() => resolve(null), ms));
 
 const orchestrator = new Orchestrator();
 
@@ -42,13 +42,12 @@ orchestrator.registerScenario(
     const bob_calendar = bob_happ.cells[0];
 
     let calendarEvent = await alice_calendar.call(
-      "todo_rename_zome",
+      "resources",
       "create_calendar_event",
       {
         title: "Event 1",
         start_time: [Math.floor(Date.now() / 1000), 0],
         end_time: [Math.floor(Date.now() / 1000) + 1000, 0],
-        location: { Custom: "hiii" },
         invitees: [],
       }
     );
@@ -57,12 +56,11 @@ orchestrator.registerScenario(
     await sleep(10);
 
     let calendarEvents = await alice_calendar.call(
-      "todo_rename_zome",
+      "resources",
       "get_all_calendar_events",
       null
     );
     t.equal(calendarEvents.length, 1);
-
   }
 );
 
