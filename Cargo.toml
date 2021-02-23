@@ -1,6 +1,7 @@
 [workspace]
 members = [
   "zomes/resources",
+  "zomes/chain-of-custody",
 ]
 
 [profile.dev]

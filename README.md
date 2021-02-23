@@ -1,6 +1,6 @@
-# Zome Developer Setup
+# Chain of Custody - Holochain Dev Workshop
 
-This folder has an example DNA for the `todo_rename_zome` zome. The actual code for the zome is in `zomes/todo_rename_zome`.
+This repository is designed to be coded following [this guide](https://holochain-gym.github.io/workshops/workshop-1).
 
 To change the code, you can work either opening VSCode inside the root folder of the repo or in this folder, you should have rust intellisense either way. It is recommended to use the `rust-analyzer` VSCode extension.
 

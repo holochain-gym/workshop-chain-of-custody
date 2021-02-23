@@ -5,6 +5,9 @@
   "zomes": {
     "resources": {
       "wasm_path": "../target/wasm32-unknown-unknown/release/resources.wasm"
+    },
+    "chain_of_custody": {
+      "wasm_path": "../target/wasm32-unknown-unknown/release/chain_of_custody.wasm"
     }
   }
 }

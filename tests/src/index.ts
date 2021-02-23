@@ -10,9 +10,10 @@ import path from "path";
 const conductorConfig = Config.gen({});
 
 // Construct proper paths for your DNAs
-const calendarEvents = path.join(__dirname, "../../chain-of-custody.dna.gz");
+const dnaPath = path.join(__dirname, "../../chain-of-custody.dna.gz");
 
-const sleep = (ms) => new Promise((resolve) => setTimeout(() => resolve(null), ms));
+const sleep = (ms) =>
+  new Promise((resolve) => setTimeout(() => resolve(null), ms));
 
 const orchestrator = new Orchestrator();
 
@@ -22,11 +23,11 @@ const installation: InstallAgentsHapps = [
   // agent 0
   [
     // happ 0
-    [calendarEvents],
+    [dnaPath],
   ],
   [
     // happ 0
-    [calendarEvents],
+    [dnaPath],
   ],
 ];
 
@@ -63,5 +64,23 @@ orchestrator.registerScenario(
     t.equal(calendarEvents.length, 1);
   }
 );
+
+orchestrator.registerScenario("passcode", async (s, t) => {
+  const [player]: Player[] = await s.players([conductorConfig]);
+
+  const req = {
+    installed_app_id: `my_app:1234`, // my_app with some unique installed id value
+    agent_key: await player.adminWs().generateAgentPubKey(),
+    dnas: [
+      {
+        path: dnaPath,
+        nick: `my_cell_nick`,
+        properties: null,
+        membrane_proof: "password",
+      },
+    ],
+  };
+  const installedHapp = await player._installHapp(req as any);
+});
 
 orchestrator.run();
